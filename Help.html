@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تیم جی تی ای آل | GTA All Team</title>
+    <style>
+        :root {
+            --glass-bg: rgba(20, 25, 45, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --text-light: #ffffff;
+            --text-gray: #b0bec5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* پس‌زمینه متحرک و زنده */
+        body {
+            font-family: Tahoma, "Segoe UI", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(-45deg, #0f172a, #2e1065, #1e1b4b, #020617);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* افکت حباب‌های نورانی در پس‌زمینه */
+        .bg-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(139,92,246,0.3) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            top: -50px;
+            left: -50px;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+        .bg-glow-2 {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(56,189,248,0.2) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            right: -100px;
+            z-index: -1;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(30px) scale(1.1); }
+            100% { transform: translateY(0px) scale(1); }
+        }
+
+        /* بدنه اصلی شیشه‌ای (Glassmorphism) */
+        .container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: clamp(25px, 5vw, 40px);
+            max-width: 650px;
+            width: 100%;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(255,255,255,0.05);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* عنوان اصلی با افکت نئون */
+        .header h1 {
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #00f2fe 0%, #4facfe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
+            letter-spacing: -1px;
+        }
+
+        .header p {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            color: var(--text-gray);
+            margin-bottom: 35px;
+            font-weight: bold;
+        }
+
+        .section-title {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            margin: 35px 0 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .section-title::before, .section-title::after {
+            content: "";
+            height: 2px;
+            width: 40px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+        }
+
+        /* دکمه اصلی وب‌سایت با انیمیشن تپش */
+        .btn-main {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            background: linear-gradient(45deg, #0052d4, #4364f7, #6fb1fc);
+            border-radius: 16px;
+            box-shadow: 0 8px 0 #003899, 0 15px 25px rgba(67, 100, 247, 0.5);
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 0 #003899, 0 0 0 0 rgba(67, 100, 247, 0.7); }
+            70% { box-shadow: 0 8px 0 #003899, 0 0 0 15px rgba(67, 100, 247, 0); }
+            100% { box-shadow: 0 8px 0 #003899, 0 0 0 0 rgba(67, 100, 247, 0); }
+        }
+
+        .btn-main:active {
+            transform: translateY(8px);
+            box-shadow: 0 0 0 #003899, 0 5px 10px rgba(67, 100, 247, 0.5);
+        }
+
+        /* گرید دقیقاً ۲ ستونه برای شبکه‌های اجتماعی */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        /* دکمه‌های شبکه‌های اجتماعی */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            padding: 16px 10px;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            font-weight: bold;
+            color: #fff;
+            border-radius: 14px;
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 14px;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .btn:active {
+            transform: translateY(4px) scale(0.98);
+        }
+
+        /* رنگ‌ها و سایه‌های اختصاصی هر پلتفرم */
+        .btn-yt::before { background: linear-gradient(135deg, #ff0000, #cc0000); }
+        .btn-yt { box-shadow: 0 6px 0 #990000; }
+        .btn-yt:hover { box-shadow: 0 10px 20px rgba(255, 0, 0, 0.4), 0 6px 0 #990000; }
+
+        .btn-ap::before { background: linear-gradient(135deg, #ea1d5d, #b31043); }
+        .btn-ap { box-shadow: 0 6px 0 #850b30; }
+        .btn-ap:hover { box-shadow: 0 10px 20px rgba(234, 29, 93, 0.4), 0 6px 0 #850b30; }
+
+        .btn-tg::before { background: linear-gradient(135deg, #0088cc, #005f8f); }
+        .btn-tg { box-shadow: 0 6px 0 #004466; }
+        .btn-tg:hover { box-shadow: 0 10px 20px rgba(0, 136, 204, 0.4), 0 6px 0 #004466; }
+
+        .btn-rb::before { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+        .btn-rb { box-shadow: 0 6px 0 #4c1d95; }
+        .btn-rb:hover { box-shadow: 0 10px 20px rgba(139, 92, 246, 0.4), 0 6px 0 #4c1d95; }
+
+        .btn-ei::before { background: linear-gradient(135deg, #f97316, #c2410c); }
+        .btn-ei { box-shadow: 0 6px 0 #9a3412; }
+        .btn-ei:hover { box-shadow: 0 10px 20px rgba(249, 115, 22, 0.4), 0 6px 0 #9a3412; }
+
+        .btn-bl::before { background: linear-gradient(135deg, #10b981, #059669); }
+        .btn-bl { box-shadow: 0 6px 0 #047857; }
+        .btn-bl:hover { box-shadow: 0 10px 20px rgba(16, 185, 129, 0.4), 0 6px 0 #047857; }
+
+        /* کلیک روی دکمه‌های شبکه‌های اجتماعی */
+        .btn:active { box-shadow: 0 0 0 transparent !important; }
+
+        /* بخش پشتیبانی */
+        .support-box {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            padding: 25px;
+            border-radius: 16px;
+            margin-top: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-box::before {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: skewX(-20deg);
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        .support-id {
+            display: inline-block;
+            background: #0f172a;
+            padding: 10px 25px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #38bdf8;
+            margin-top: 15px;
+            border: 1px solid #38bdf8;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+            user-select: all;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- المان‌های نورانی پس‌زمینه -->
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>تیم جی تی ای آل</h1>
+            <p>بزرگترین مرجع تخصصی مود و آموزش GTA در ایران</p>
+        </div>
+
+        <a href="https://GTAall.ir" target="_blank" class="btn-main">
+            🌐 ورود به وب‌سایت (GTAall.ir)
+        </a>
+
+        <div class="section-title">ویدیوهای آموزشی و تست</div>
+        <div class="grid-2">
+            <a href="https://youtube.com/@gta-all" target="_blank" class="btn btn-yt">▶️ یوتیوب</a>
+            <a href="https://www.aparat.com/GTAall" target="_blank" class="btn btn-ap">⏺ آپارات</a>
+        </div>
+
+        <div class="section-title">شبکه‌های اجتماعی ما</div>
+        <div class="grid-2">
+            <a href="https://T.me/GTA_all_IR" target="_blank" class="btn btn-tg">✈️ تلگرام</a>
+            <a href="https://rubika.ir/GTAall_IR" target="_blank" class="btn btn-rb">🟣 روبیکا</a>
+            <a href="https://eitaa.com/GTAall_IR" target="_blank" class="btn btn-ei">🟠 ایتا</a>
+            <a href="https://bale.ai/gtaall_ir" target="_blank" class="btn btn-bl">🟢 بله</a>
+        </div>
+
+        <div class="support-box">
+            <p>🛠️ برای دریافت پشتیبانی و رفع مشکلات، در تمامی پیام‌رسان‌ها به آیدی زیر پیام دهید:</p>
+            <div class="support-id">@GTAall_Sup</div>
+        </div>
+
+        <div class="footer">
+            © تمامی حقوق متعلق به تیم GTAall.ir می‌باشد.
+        </div>
+    </div>
+
+</body>
+</html>
